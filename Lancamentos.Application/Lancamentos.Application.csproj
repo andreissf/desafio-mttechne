@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Validations\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="13.0.1" />
+      <PackageReference Include="FluentValidation" Version="11.9.2" />
+      <PackageReference Include="MediatR" Version="12.4.0" />
+      <PackageReference Include="Refit" Version="7.1.2" />
+      <PackageReference Include="Refit.HttpClientFactory" Version="7.1.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Lancamentos.Domain\Lancamentos.Domain.csproj" />
+      <ProjectReference Include="..\Lancamentos.Infrastructure\Lancamentos.Infrastructure.csproj" />
+      <ProjectReference Include="..\MessageBus\MessageBus.csproj" />
+    </ItemGroup>
+
+</Project>

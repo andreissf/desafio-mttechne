@@ -1,0 +1,456 @@
+{
+	"info": {
+		"_postman_id": "5f27d18b-d83a-409c-b8fd-49673805ef8c",
+		"name": "MTTechne",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "230179",
+		"_collection_link": "https://gold-crater-88164.postman.co/workspace/NerdStore~97d8c59f-6242-4d78-a230-782071b02b27/collection/230179-5f27d18b-d83a-409c-b8fd-49673805ef8c?action=share&source=collection_link&creator=230179"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "lancamentos",
+					"item": [
+						{
+							"name": "/api/lancamentos",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"var lancamentoId = jsonData[0][\"id\"]",
+											"pm.environment.set(\"idLancamento\",lancamentoId);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlLancamento}}/api/lancamentos",
+									"host": [
+										"{{baseUrlLancamento}}"
+									],
+									"path": [
+										"api",
+										"lancamentos"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/lancamentos",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"lancamentos"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/lancamentos",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"lancamentos"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/api/lancamentos",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"tipoLancamentoId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa5\",\n  \"descricao\": \"Lancamento 1\",\n  \"valor\": 20\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrlLancamento}}/api/lancamentos",
+									"host": [
+										"{{baseUrlLancamento}}"
+									],
+									"path": [
+										"api",
+										"lancamentos"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"tipoLancamentoId\": \"<uuid>\",\n  \"descricao\": \"<string>\",\n  \"valor\": \"<double>\",\n  \"data\": \"<dateTime>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/lancamentos",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"lancamentos"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"tipoLancamentoId\": \"<uuid>\",\n  \"descricao\": \"<string>\",\n  \"valor\": \"<double>\",\n  \"data\": \"<dateTime>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/lancamentos",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"lancamentos"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/api/lancamentos/id:guid",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"descricao\": \"Lancamento atualizado\",\n  \"valor\": 100\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrlLancamento}}/api/lancamentos/{{idLancamento}}",
+									"host": [
+										"{{baseUrlLancamento}}"
+									],
+									"path": [
+										"api",
+										"lancamentos",
+										"{{idLancamento}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/lancamentos/id:guid?id=<uuid>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"lancamentos",
+												"id:guid"
+											],
+											"query": [
+												{
+													"key": "id",
+													"value": "<uuid>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/lancamentos/id:guid?id=<uuid>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"lancamentos",
+												"id:guid"
+											],
+											"query": [
+												{
+													"key": "id",
+													"value": "<uuid>"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/api/lancamentos/id:guid",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlLancamento}}/api/lancamentos/{{idLancamento}}",
+									"host": [
+										"{{baseUrlLancamento}}"
+									],
+									"path": [
+										"api",
+										"lancamentos",
+										"{{idLancamento}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/lancamentos/id:guid?id=<uuid>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"lancamentos",
+												"id:guid"
+											],
+											"query": [
+												{
+													"key": "id",
+													"value": "<uuid>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/api/lancamentos/:id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlLancamento}}/api/lancamentos/{{idLancamento}}",
+									"host": [
+										"{{baseUrlLancamento}}"
+									],
+									"path": [
+										"api",
+										"lancamentos",
+										"{{idLancamento}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/lancamentos/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"lancamentos",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/lancamentos/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"lancamentos",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "saldo",
+					"item": [
+						{
+							"name": "saldo",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlSaldo}}/api/consolidado-diario",
+									"host": [
+										"{{baseUrlSaldo}}"
+									],
+									"path": [
+										"api",
+										"consolidado-diario"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/"
+		}
+	]
+}

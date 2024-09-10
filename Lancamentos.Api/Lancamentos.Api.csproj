@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <InvariantGlobalization>false</InvariantGlobalization>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>$(NoWarn);1591</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AutoMapper" Version="13.0.1" />
+        <PackageReference Include="MediatR" Version="12.4.0" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.0"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="UseCases\Update\LancamentosController.cs\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="UseCases\Update\LancamentosController.cs\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="UseCases\Update\LancamentosController.cs\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="UseCases\Update\LancamentosController.cs\**" />
+      <None Remove="Lancamentos.Api.http" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Lancamentos.Application\Lancamentos.Application.csproj" />
+      <ProjectReference Include="..\MessageBus\MessageBus.csproj" />
+    </ItemGroup>
+</Project>

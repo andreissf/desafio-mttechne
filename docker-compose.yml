@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"   # Porta para o protocolo AMQP
+      - "15672:15672" # Porta para a interface de gerenciamento web
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - app-network
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql
+    ports:
+      - "1433:1433"  # Porta padrão do SQL Server
+    environment:
+      SA_PASSWORD: "TmpDb@MTech"
+      ACCEPT_EULA: "Y"
+    volumes:
+      - mssql_data:/var/opt/mssql
+    networks:
+      - app-network
+
+# Definindo volumes persistentes para dados
+volumes:
+  rabbitmq_data:
+  mssql_data:
+
+networks:
+  app-network:
+    driver: bridge
